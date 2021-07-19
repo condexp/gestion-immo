@@ -1,0 +1,53 @@
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container px-4 px-lg-5">
+		<a class="navbar-brand" href="#!">Sabbah immobilier</a>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ path('home_annonce') }}">Home</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="#!">About</a>
+				</li>
+
+			</ul>
+			<div class="float-right">
+				<ul class="navbar-nav me-auto mb-1 mb-lg-0 ms-lg-4">
+
+					{% if not app.user %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_register') }}">Enregistrement</a>
+
+						</li>
+
+					{% else %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('property_index') }}">Gestion des Biens
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_property_list', {'id': app.user.id}) }}" role="button">Mes biens</a>
+						</li>
+
+					{% endif %}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</nav>
+<!-- Header-->

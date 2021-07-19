@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}nouveau Bien
+{% endblock %}
+
+{% block body %}
+	<h1>Creer un nouveau Bien</h1>
+
+	{{ include('property/_form.html.twig') }}
+
+	<a href="{{ path('property_index') }}">Retour à la liste</a>
+{% endblock %}
