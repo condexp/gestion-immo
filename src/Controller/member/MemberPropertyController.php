@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\member;
 
 use App\Entity\Property;
 use App\Entity\Images;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
-use App\Repository\UsersRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,9 +13,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/property")
+ * @Route("/member")
  */
-class PropertyController extends AbstractController
+class MemberPropertyController extends AbstractController
 {
     /**
      * @Route("/", name="property_index", methods={"GET"})
@@ -25,7 +24,7 @@ class PropertyController extends AbstractController
     {
 
 
-        return $this->render('property/index.html.twig', [
+        return $this->render('member/index.html.twig', [
             'property' => $propertyRepository->findAll(),
         ]);
     }
@@ -76,7 +75,7 @@ class PropertyController extends AbstractController
             return $this->redirectToRoute('property_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('property/new.html.twig', [
+        return $this->renderForm('member/new.html.twig', [
             'bien' => $bien,
             'form' => $form,
         ]);
@@ -87,7 +86,7 @@ class PropertyController extends AbstractController
      */
     public function show(Property $bien): Response
     {
-        return $this->render('property/show.html.twig', [
+        return $this->render('member/show.html.twig', [
             'bien' => $bien,
         ]);
     }
@@ -129,7 +128,7 @@ class PropertyController extends AbstractController
             return $this->redirectToRoute('property_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('property/edit.html.twig', [
+        return $this->renderForm('member/edit.html.twig', [
             'bien' => $bien,
             'form' => $form,
         ]);
@@ -177,6 +176,7 @@ class PropertyController extends AbstractController
 
 
     // Requete de sql de selection des propertys by users
+
     /**
      * @Route("/view/{id}", methods={"GET"}, name="app_property_list")
      */
@@ -186,12 +186,8 @@ class PropertyController extends AbstractController
         // dd($userid);
         $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
         // dd($propertys);
-        return $this->render('property/_list.html.twig', [
+        return $this->render('member/_list.html.twig', [
             'propertys' => $propertys,
-
-
-
-
         ]);
     }
 }
