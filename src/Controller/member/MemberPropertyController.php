@@ -18,14 +18,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  */
 class MemberPropertyController extends AbstractController
 {
-    /**
-     * @Route("/", name="property_index", methods={"GET"})
-     */
-    public function index(PropertyRepository $propertyRepository): Response
-    {
 
-        return $this->render('member/index.html.twig', [
-            'property' => $propertyRepository->findAll(),
+    // Requete de sql de selection des propertys by users
+
+    /**
+     * @Route("/view/{id}", methods={"GET"}, name="app_property_list")
+     */
+    public function listPropertysByUser($id): Response
+    {
+        // $userid = $this->getUser()->getId();
+        // dd($userid);
+        $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
+        // dd($propertys);
+        return $this->render('member/_index.html.twig', [
+            'propertys' => $propertys,
         ]);
     }
 
@@ -174,22 +180,5 @@ class MemberPropertyController extends AbstractController
         } else {
             return new JsonResponse(['error' => 'Token Invalide'], 400);
         }
-    }
-
-
-    // Requete de sql de selection des propertys by users
-
-    /**
-     * @Route("/view/{id}", methods={"GET"}, name="app_property_list")
-     */
-    public function listPropertysByUser($id): Response
-    {
-        // $userid = $this->getUser()->getId();
-        // dd($userid);
-        $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
-        // dd($propertys);
-        return $this->render('member/_list.html.twig', [
-            'propertys' => $propertys,
-        ]);
     }
 }

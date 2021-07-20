@@ -5,9 +5,6 @@
 
 {% block body %}
 
-	{% for message in app.flashes('success') %}
-		<div class="alert alert-success" role="alert">{{ message }}</div>
-	{% endfor %}
 
 	<section class="py-5">
 		<div class="container px-2 px-lg-2 mt-2">
@@ -35,7 +32,9 @@
 								<div
 									class="text-center">
 									<!-- Product name-->
-									<h5 class="fw-bolder">{{bien.title}}
+									{{ dump(bien.id) }}
+									<h5 class="fw-bolder">
+										<a href="{{ path('property_show_guest', {'id': bien.id}) }}">{{bien.title}}</a>
 									</h5>
 									<!-- Product reviews-->
 									<div class="d-flex justify-content-center small text-warning mb-2">
