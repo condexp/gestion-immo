@@ -4,6 +4,7 @@ namespace App\Controller\member;
 
 use App\Entity\Property;
 use App\Entity\Images;
+use App\Entity\Users;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,16 +24,15 @@ class MemberPropertyController extends AbstractController
     public function index(PropertyRepository $propertyRepository): Response
     {
 
-
         return $this->render('member/index.html.twig', [
             'property' => $propertyRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="property_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="property_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new($id, Request $request): Response
     {
 
         $bien = new Property();
@@ -71,8 +71,8 @@ class MemberPropertyController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($bien);
             $entityManager->flush();
-
-            return $this->redirectToRoute('property_index', [], Response::HTTP_SEE_OTHER);
+            $iduser = $this->getUser()->getId();
+            return $this->redirectToRoute('app_property_list',  ['id' => $iduser], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('member/new.html.twig', [
@@ -94,7 +94,7 @@ class MemberPropertyController extends AbstractController
     /**
      * @Route("/{id}/edit", name="property_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Property $bien): Response
+    public function edit(Request $request, Property $bien, $id): Response
     {
         $form = $this->createForm(PropertyType::class, $bien);
         $form->handleRequest($request);
@@ -125,7 +125,8 @@ class MemberPropertyController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('property_index', [], Response::HTTP_SEE_OTHER);
+            $iduser = $this->getUser()->getId();
+            return $this->redirectToRoute('app_property_list',  ['id' => $iduser], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('member/edit.html.twig', [
@@ -137,7 +138,7 @@ class MemberPropertyController extends AbstractController
     /**
      * @Route("/{id}", name="property_delete", methods={"POST"})
      */
-    public function delete(Request $request, Property $bien): Response
+    public function delete(Request $request, Property $bien, $id): Response
     {
         if ($this->isCsrfTokenValid('delete' . $bien->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -145,7 +146,8 @@ class MemberPropertyController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('property_index', [], Response::HTTP_SEE_OTHER);
+        $iduser = $this->getUser()->getId();
+        return $this->redirectToRoute('app_property_list',  ['id' => $iduser], Response::HTTP_SEE_OTHER);
     }
 
     /**

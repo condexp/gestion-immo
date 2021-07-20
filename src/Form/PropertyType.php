@@ -15,6 +15,15 @@ class PropertyType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
+            ->add('price')
+            ->add('area')
+            ->add('city')
+            ->add('postcode')
+            ->add('adress')
+
+            ->add('rooms')
+            ->add('bedrooms')
+            ->add('energy')
             // On ajoute le champ "images" dans le formulaire
             // Il n'est pas lié à la base de données (mapped à false)
             ->add('images', FileType::class, [

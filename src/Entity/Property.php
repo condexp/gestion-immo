@@ -40,6 +40,51 @@ class Property
      */
     private $users;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $area;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adress;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $postcode;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $sold;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rooms;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $bedrooms;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $energy;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -115,6 +160,114 @@ class Property
     public function setUsers(?Users $users): self
     {
         $this->users = $users;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getArea(): ?float
+    {
+        return $this->area;
+    }
+
+    public function setArea(?float $area): self
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getAdress(): ?string
+    {
+        return $this->adress;
+    }
+
+    public function setAdress(?string $adress): self
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getPostcode(): ?int
+    {
+        return $this->postcode;
+    }
+
+    public function setPostcode(?int $postcode): self
+    {
+        $this->postcode = $postcode;
+
+        return $this;
+    }
+
+    public function getSold(): ?bool
+    {
+        return $this->sold;
+    }
+
+    public function setSold(?bool $sold): self
+    {
+        $this->sold = $sold;
+
+        return $this;
+    }
+
+    public function getRooms(): ?int
+    {
+        return $this->rooms;
+    }
+
+    public function setRooms(?int $rooms): self
+    {
+        $this->rooms = $rooms;
+
+        return $this;
+    }
+
+    public function getBedrooms(): ?int
+    {
+        return $this->bedrooms;
+    }
+
+    public function setBedrooms(?int $bedrooms): self
+    {
+        $this->bedrooms = $bedrooms;
+
+        return $this;
+    }
+
+    public function getEnergy(): ?string
+    {
+        return $this->energy;
+    }
+
+    public function setEnergy(?string $energy): self
+    {
+        $this->energy = $energy;
 
         return $this;
     }
