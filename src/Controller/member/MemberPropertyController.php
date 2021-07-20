@@ -82,7 +82,7 @@ class MemberPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="property_show", methods={"GET"})
+     * @Route("/{id}/show", name="property_show", methods={"GET"})
      */
     public function show(Property $bien): Response
     {

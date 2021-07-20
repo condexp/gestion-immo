@@ -8,5 +8,5 @@
 
 	{{ include('member/_form.html.twig') }}
 
-	<a href="{{ path('property_index') }}">Retour à la liste</a>
+	<a href="{{ path('app_property_list', {'id': app.user.id}) }}">Retour à la liste</a>
 {% endblock %}
