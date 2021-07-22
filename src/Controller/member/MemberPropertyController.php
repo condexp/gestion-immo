@@ -4,9 +4,9 @@ namespace App\Controller\member;
 
 use App\Entity\Property;
 use App\Entity\Images;
-use App\Entity\Users;
+//use App\Entity\Users;
 use App\Form\PropertyType;
-use App\Repository\PropertyRepository;
+//use App\Repository\PropertyRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,11 +26,9 @@ class MemberPropertyController extends AbstractController
      */
     public function listPropertysByUser($id): Response
     {
-        // $userid = $this->getUser()->getId();
-        // dd($userid);
+
         $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
 
-        // dd($propertys);
         return $this->render('member/_index.html.twig', [
             'propertys' => $propertys,
         ]);
@@ -52,7 +50,7 @@ class MemberPropertyController extends AbstractController
 
             // On récupère les images transmises
             $images = $form->get('images')->getData();
-            dd($images);
+
             // On boucle sur les images
             foreach ($images as $image) {
                 // On génère un nouveau name de fichier
@@ -74,7 +72,6 @@ class MemberPropertyController extends AbstractController
                 // en base de donnée sur la table des property.
                 $bien->setUsers($this->getUser());
             }
-            dd($bien);
 
             $entityManager = $this->getDoctrine()->getManager();
 

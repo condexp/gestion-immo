@@ -92,6 +92,11 @@ class Property
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $postcode;
+
 
 
     public function __construct()
@@ -289,6 +294,18 @@ class Property
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getPostcode(): ?string
+    {
+        return $this->postcode;
+    }
+
+    public function setPostcode(?string $postcode): self
+    {
+        $this->postcode = $postcode;
 
         return $this;
     }

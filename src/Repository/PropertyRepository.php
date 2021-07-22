@@ -18,21 +18,8 @@ class PropertyRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Property::class);
     }
-
-
-    /*  public function findByCategories($categories) {
-        $qb = $this->createQueryBuilder('c')
-                ->Join('c.souscategories', 's')
-                //->addSelect('s')
-                ->Join('s.article', 'a')
-                ->where('s.categories IN (:categories)')
-                ->setParameter('categories', $categories);
-        //dump($qb);
-   
-        return $qb->getQuery()->getResult();
- 
- */
-    // /**
+    
+    
     //SELECT u.email from property p, users u WHERE u.id=p.users_id 
     //  * @return Property[] Returns an array of Property objects
     //  */

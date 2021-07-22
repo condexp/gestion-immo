@@ -121,12 +121,12 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/friendsofphp/proxy-manager-lts/src/ProxyManager">
+	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/fakerphp/faker/src/Faker">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/fzaninotto/faker/src/Faker">
+	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/friendsofphp/proxy-manager-lts/src/ProxyManager">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -177,6 +177,11 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/phpdocumentor/type-resolver/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/phpmailer/phpmailer/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -327,6 +332,11 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/sensio/framework-extra-bundle/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/swiftmailer/swiftmailer/lib">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
@@ -671,6 +681,11 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
+	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/symfony/swiftmailer-bundle">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
 	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/symfony/translation-contracts">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
@@ -747,6 +762,11 @@
 		</attributes>
 	</buildpathentry>
 	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/twig/extra-bundle">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="**/skeleton/|**/Test*/|**/CG/**/Fixture/" kind="src" path="vendor/twig/intl-extra">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
 		</attributes>
