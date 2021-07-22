@@ -26,7 +26,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $email;
+    public $email;
 
     /**
      * @ORM\Column(type="json")
@@ -70,10 +70,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    public function __toString()
-    {
-        return $this->name;
-    }
+
 
     /**
      * A visual identifier that represents this user.

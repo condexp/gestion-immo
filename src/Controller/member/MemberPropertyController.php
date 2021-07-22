@@ -29,6 +29,7 @@ class MemberPropertyController extends AbstractController
         // $userid = $this->getUser()->getId();
         // dd($userid);
         $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
+
         // dd($propertys);
         return $this->render('member/_index.html.twig', [
             'propertys' => $propertys,
@@ -38,7 +39,7 @@ class MemberPropertyController extends AbstractController
     /**
      * @Route("/new/{id}", name="property_new", methods={"GET","POST"})
      */
-    public function new($id, Request $request): Response
+    public function new(Request $request): Response
     {
 
         $bien = new Property();
@@ -51,7 +52,7 @@ class MemberPropertyController extends AbstractController
 
             // On récupère les images transmises
             $images = $form->get('images')->getData();
-
+            dd($images);
             // On boucle sur les images
             foreach ($images as $image) {
                 // On génère un nouveau name de fichier
@@ -73,8 +74,10 @@ class MemberPropertyController extends AbstractController
                 // en base de donnée sur la table des property.
                 $bien->setUsers($this->getUser());
             }
+            dd($bien);
 
             $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->persist($bien);
             $entityManager->flush();
             $iduser = $this->getUser()->getId();

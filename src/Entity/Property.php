@@ -60,10 +60,6 @@ class Property
      */
     private $adress;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $postcode;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -85,8 +81,22 @@ class Property
      */
     private $energy;
 
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+
+
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->images = new ArrayCollection();
     }
 
@@ -118,10 +128,7 @@ class Property
 
         return $this;
     }
-    public function __toString()
-    {
-        return $this->title;
-    }
+
     /**
      * @return Collection|Images[]
      */
@@ -212,17 +219,7 @@ class Property
         return $this;
     }
 
-    public function getPostcode(): ?int
-    {
-        return $this->postcode;
-    }
 
-    public function setPostcode(?int $postcode): self
-    {
-        $this->postcode = $postcode;
-
-        return $this;
-    }
 
     public function getSold(): ?bool
     {
@@ -268,6 +265,30 @@ class Property
     public function setEnergy(?string $energy): self
     {
         $this->energy = $energy;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

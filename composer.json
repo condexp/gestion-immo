@@ -12,7 +12,7 @@
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
-        "fzaninotto/faker": "^1.9",
+        "fakerphp/faker": "^1.15",
         "knplabs/knp-time-bundle": "^1.16",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.1",
@@ -45,6 +45,7 @@
         "symfonycasts/reset-password-bundle": "^1.9",
         "symfonycasts/verify-email-bundle": "^1.5",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.3",
         "twig/string-extra": "^3.3",
         "twig/twig": "^2.12|^3.0"
     },

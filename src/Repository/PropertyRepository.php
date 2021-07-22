@@ -33,6 +33,7 @@ class PropertyRepository extends ServiceEntityRepository
  
  */
     // /**
+    //SELECT u.email from property p, users u WHERE u.id=p.users_id 
     //  * @return Property[] Returns an array of Property objects
     //  */
     /*

@@ -4,6 +4,7 @@ namespace App\Controller\guest;
 
 use App\Entity\Property;
 use App\Repository\PropertyRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +22,7 @@ class PropertyHomeController extends AbstractController
 
         $property = $bienRepository->findall();
         return $this->render('annonce/index.html.twig', [
-            'property' => $property,
+            'property' => $property
         ]);
     }
 
