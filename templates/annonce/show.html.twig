@@ -14,7 +14,7 @@
 			</tr>
 			<tr>
 				<th>Description</th>
-				<td>{{ bien.description | u.truncate(350, "...") | raw }}</td>
+				<td>{{ bien.description |  u.truncate(150, '...') | raw  }}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -46,24 +46,38 @@
 		<a href="{{ path('home_annonce') }}">Retour à la liste
 		</a>
 	</div>
-	<div class="text-left">
-		<a href="{{ path('home_annonce') }}">contacter l'annonceur</a>
-		<div id="contactForm" class="mt-4">
-			{{ form_start(form) }}
-			<div class="row">
-				<div class="col">{{ form_row(form.firstname) }}</div>
-				<div class="col">{{ form_row(form.lastname) }}</div>
+
+
+	<div class="accordion" id="accordionExample">
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingOne">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+					contacter l'annonceur
+				</button>
+			</h2>
+			<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+				<div class="accordion-body">
+					<div id="contactForm" class="mt-4">
+						{{ form_start(form) }}
+						<div class="row">
+							<div class="col">{{ form_row(form.firstname) }}</div>
+							<div class="col">{{ form_row(form.lastname) }}</div>
+						</div>
+						<div class="row">
+							<div class="col">{{ form_row(form.phone) }}</div>
+							<div class="col">{{ form_row(form.email) }}</div>
+						</div>
+						{{ form_rest(form) }}
+						<div class="form-group">
+							<button class="btn btn-primary">Envoyer</button>
+						</div>
+						{{ form_end(form) }}
+					</div>
+
+				</div>
 			</div>
-			<div class="row">
-				<div class="col">{{ form_row(form.phone) }}</div>
-				<div class="col">{{ form_row(form.email) }}</div>
-			</div>
-			{{ form_rest(form) }}
-			<div class="form-group">
-				<button class="btn btn-primary">Envoyer</button>
-			</div>
-			{{ form_end(form) }}
 		</div>
+
 	</div>
 
 

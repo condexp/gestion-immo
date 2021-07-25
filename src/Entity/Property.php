@@ -6,6 +6,7 @@ use App\Repository\PropertyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=PropertyRepository::class)
@@ -24,6 +25,11 @@ class Property
      */
     private $title;
 
+    /**
+     * @gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
     /**
      * @ORM\Column(type="text")
      */
@@ -96,6 +102,18 @@ class Property
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $postcode;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=PropertyType::class, inversedBy="properties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $propertytype;
+
 
 
 
@@ -306,6 +324,39 @@ class Property
     public function setPostcode(?string $postcode): self
     {
         $this->postcode = $postcode;
+
+        return $this;
+    }
+
+
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    public function getPropertytype(): ?PropertyType
+    {
+        return $this->propertytype;
+    }
+
+    public function setPropertytype(?PropertyType $propertytype): self
+    {
+        $this->propertytype = $propertytype;
 
         return $this;
     }

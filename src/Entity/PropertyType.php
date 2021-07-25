@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PropertyTypeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,6 +24,16 @@ class PropertyType
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Property::class, mappedBy="propertytype", orphanRemoval=true)
+     */
+    private $properties;
+
+    public function __construct()
+    {
+        $this->properties = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,42 @@ class PropertyType
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return Collection|Property[]
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->properties->contains($property)) {
+            $this->properties[] = $property;
+            $property->setPropertytype($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->removeElement($property)) {
+            // set the owning side to null (unless already changed)
+            if ($property->getPropertytype() === $this) {
+                $property->setPropertytype(null);
+            }
+        }
 
         return $this;
     }

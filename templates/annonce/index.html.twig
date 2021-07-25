@@ -39,7 +39,7 @@
 									<!-- Product name-->
 
 									<h5 class="fw-bolder">
-										<a href="{{ path('property_show_guest', {'id': bien.id}) }}">{{bien.title}}</a>
+										<a href="{{ path('property_show_guest', {slug: bien.slug}) }}">{{bien.title}}</a>
 									</h5>
 									<h5 class="fw-bolder">
 										<span>{{bien.price}}
@@ -57,7 +57,7 @@
 
 									<h5 class="fw-bolder">
 										creer:
-										<span>{{bien.createdAt | date }}
+										<span>{{bien.createdAt | ago }}
 										</span>
 									</h5>
 								</div>

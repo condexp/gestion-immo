@@ -30,7 +30,8 @@ class PropertyHomeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="property_show_guest", methods={"GET","POST"})
+     *---- @Route("/{id}", name="property_show_guest", methods={"GET","POST"})
+     * @Route("/{slug}", name="property_show_guest", methods={"GET","POST"})
      */
     public function showguest(Property $bien, Request $request, ContactNotification $notification): Response
     {

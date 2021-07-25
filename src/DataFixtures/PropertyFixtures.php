@@ -14,13 +14,15 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
-
-        for ($nbProperty = 1; $nbProperty <= 10; $nbProperty++) {
+       
+        for ($nbProperty = 1; $nbProperty <= 20; $nbProperty++) {
             $user = $this->getReference('user_' . $faker->numberBetween(1, 19));
-
+            $propertytype = $this->getReference('propertytype_'. $faker->numberBetween(1, 7));
 
             $property = new Property();
             $property->setUsers($user);
+            $property->setPropertytype($propertytype);
+
 
             $property->setTitle($faker->realText(20));
             $property->setDescription($faker->realText(300));
@@ -33,37 +35,18 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setCity($faker->city);
             $property->setPostcode($faker->postcode);
             $property->setSold($faker->numberBetween(0, 1));
+            $property->setActive(true);
+
 
             // On uploade et on génère les images
-            for ($image = 1; $image <= 3; $image++) {
+            for ($k = 1; $k <= 6; $k++) {
 
-                $img1 = 'public/uploads/images1.jpg';
-                $img2 = 'public/uploads/image2.jpg';
-                $img3 = 'public/uploads/image3.jpg';
-
-                if ($image = 1) {
-
-
-                    $imageProperty = new Images();
-                    $nomimage = str_replace('public/uploads/', '', $img1);
-                    $imageProperty->setName($nomimage);
-                    $property->addImage($imageProperty);
-                }
-
-                if ($image = 2) {
-                    $imageProperty = new Images();
-                    $nomimage = str_replace('public/uploads/', '', $img2);
-                    $imageProperty->setName($nomimage);
-                    $property->addImage($imageProperty);
-                }
-
-                if ($image = 3) {
-
-                    $imageProperty = new Images();
-                    $nomimage = str_replace('public/uploads/', '', $img3);
-                    $imageProperty->setName($nomimage);
-                    $property->addImage($imageProperty);
-                }
+                // $rand = rand(1, 3);
+                $img = 'public/uploads/image' . rand(1, 6) . '.jpg';
+                $imageProperty = new Images();
+                $nomimage = str_replace('public/uploads/', '', $img);
+                $imageProperty->setName($nomimage);
+                $property->addImage($imageProperty);
             }
             $manager->persist($property);
         }

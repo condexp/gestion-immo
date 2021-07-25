@@ -4,9 +4,7 @@ namespace App\Controller\member;
 
 use App\Entity\Property;
 use App\Entity\Images;
-//use App\Entity\Users;
-use App\Form\PropertyType;
-//use App\Repository\PropertyRepository;
+use App\Form\PropertyFormType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,12 +39,17 @@ class MemberPropertyController extends AbstractController
     {
 
         $bien = new Property();
-        //$myuser = new Users;
-        $form = $this->createForm(PropertyType::class, $bien);
+
+        $form = $this->createForm(PropertyFormType::class, $bien);
         $form->handleRequest($request);
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
+            //dd($this->getUser());
+            $bien->setActive(false);
 
             // On récupère les images transmises
             $images = $form->get('images')->getData();
@@ -100,13 +103,12 @@ class MemberPropertyController extends AbstractController
     /**
      * @Route("/{id}/edit", name="property_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Property $bien, $id): Response
+    public function edit(Request $request, Property $bien): Response
     {
-        $form = $this->createForm(PropertyType::class, $bien);
+        $form = $this->createForm(PropertyFormType::class, $bien);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
 
             // On récupère les images transmises
             $images = $form->get('images')->getData();
@@ -144,7 +146,7 @@ class MemberPropertyController extends AbstractController
     /**
      * @Route("/{id}", name="property_delete", methods={"POST"})
      */
-    public function delete(Request $request, Property $bien, $id): Response
+    public function delete(Request $request, Property $bien): Response
     {
         if ($this->isCsrfTokenValid('delete' . $bien->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

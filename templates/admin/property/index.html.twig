@@ -1,0 +1,121 @@
+{% extends 'admin/sbadmin.html.twig' %}
+
+{% block title %}Hello AdminController!
+{% endblock %}
+
+{% block body %}
+	<main>
+		<div class="container-fluid px-4">
+			<h1 class="mt-4">Dashboard</h1>
+			<ol class="breadcrumb mb-4">
+				<li class="breadcrumb-item active">Dashboard</li>
+			</ol>
+			<!-- Data Table -->
+			<div class="card mb-4">
+				<div class="card-header">
+					<i class="fas fa-table me-1"></i>
+					DataTable Example
+				</div>
+				<div class="card-body">
+					<table id="datatablesSimple">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Titre</th>
+								<th>Membre</th>
+								<th>Date</th>
+								<th>Active</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								<th>Id</th>
+								<th>Titre</th>
+								<th>Membre</th>
+								<th>Date</th>
+								<th>Active</th>
+								<th>Actions</th>
+							</tr>
+						</tfoot>
+						<tbody>
+
+							{% for property in propertys %}
+								<tr>
+									<td>{{ property.id }}</td>
+									<td>{{ property.title }}</td>
+									<td>{{ property.users.email }}</td>
+									<td>{{ property.createdAt | ago }}</td>
+									<!-- <td>{{ property.active }}</td> -->
+									<td>
+										<div class="form-check form-switch">
+											<input class="form-check-input danger" type="checkbox" name="active" id="customSwitch{{ property.id }}" data-id="{{ property.id }}" {{ property.active ? 'checked' : null}}>
+										</div>
+									</td>
+									<td>
+										<a href="{{ path('admin_property_update', {id: property.id}) }}" class="btn btn-primary btn-sm">Modifier</a>
+										<a href="" class="btn btn-danger btn-sm modal-trigger" data-bs-toggle="modal" data-bs-target="#modalDelete" data-id="{{ property.id }}" data-title="{{ property.title }}">Supprimer</a>
+									</td>
+								</tr>
+							{% endfor %}
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</main>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Supprimer un article</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+					<a href="" class="btn btn-primary">Supprimer</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script>
+		window.onload = () => { // console.log("Load !!!!")
+let activate = document.querySelectorAll("[type=checkbox]")
+// console.log(activate)
+for (let button of activate) { // console.log(button)
+button.addEventListener("click", function () { // alert("Click")
+console.log("clic")
+let xmlhttp = new XMLHttpRequest
+xmlhttp.open("get", `/admin/property/activate/${
+this.dataset.id
+}`)
+xmlhttp.send()
+})
+}
+
+let btdeletes = document.querySelectorAll(".modal-trigger")
+for (let btdelete of btdeletes) {
+btdelete.addEventListener("click", function () {
+document.querySelector(".modal-footer a").href = `/admin/property/delete/${
+this.dataset.id
+}`
+document.querySelector(".modal-body").innerText = `Etes-vous sûr de vouloir supprimer l'article "${
+this.dataset.title
+}"`
+})
+}
+
+}
+	</script>
+{% endblock %}
