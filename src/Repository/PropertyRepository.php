@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Property;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 
 /**
  * @method Property|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,8 +20,10 @@ class PropertyRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Property::class);
     }
-    
-    
+
+
+
+
     //SELECT u.email from property p, users u WHERE u.id=p.users_id 
     //  * @return Property[] Returns an array of Property objects
     //  */

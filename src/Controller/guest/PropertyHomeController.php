@@ -7,6 +7,7 @@ use App\Entity\Property;
 use App\Form\ContactType;
 use App\Repository\PropertyRepository;
 use App\Notification\ContactNotification;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,12 +21,18 @@ class PropertyHomeController extends AbstractController
      * @Route("/", name="home_annonce")
      */
 
-    public function findallbien(PropertyRepository $bienRepository): Response
+    public function findallbien(Request $request, PaginatorInterface  $paginator): Response
     {
+        $datanew = $this->getDoctrine()->getRepository(Property::class)->findBy([], ['createdAt' => 'desc']);
 
-        $property = $bienRepository->findall();
+        $propertys = $paginator->paginate(
+            $datanew,
+            $request->query->getInt('page', 1),
+            4
+        );
+
         return $this->render('annonce/index.html.twig', [
-            'property' => $property
+            'property' => $propertys
         ]);
     }
 

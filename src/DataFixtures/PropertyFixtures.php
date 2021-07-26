@@ -14,10 +14,10 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create('fr_FR');
-       
+
         for ($nbProperty = 1; $nbProperty <= 20; $nbProperty++) {
             $user = $this->getReference('user_' . $faker->numberBetween(1, 19));
-            $propertytype = $this->getReference('propertytype_'. $faker->numberBetween(1, 7));
+            $propertytype = $this->getReference('propertytype_' . $faker->numberBetween(1, 7));
 
             $property = new Property();
             $property->setUsers($user);
@@ -31,6 +31,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setRooms($faker->numberBetween(2, 10));
             $property->setBedrooms($faker->numberBetween(1, 9));
             $property->setPrice($faker->numberBetween(100, 900000));
+            $property->setEnergy('solaire');
 
             $property->setCity($faker->city);
             $property->setPostcode($faker->postcode);

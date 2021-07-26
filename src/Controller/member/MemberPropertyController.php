@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
 /**
  * @Route("/member")
  */
@@ -24,9 +25,7 @@ class MemberPropertyController extends AbstractController
      */
     public function listPropertysByUser($id): Response
     {
-
         $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
-
         return $this->render('member/_index.html.twig', [
             'propertys' => $propertys,
         ]);

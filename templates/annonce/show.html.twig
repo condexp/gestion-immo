@@ -7,7 +7,6 @@
 	<h1>Bien</h1>
 	<table class="table">
 		<tbody>
-
 			<tr>
 				<th>Titre</th>
 				<td>{{ bien.title }}</td>
@@ -15,6 +14,36 @@
 			<tr>
 				<th>Description</th>
 				<td>{{ bien.description |  u.truncate(150, '...') | raw  }}</td>
+			</tr>
+			<tr>
+				<th>Prix</th>
+				<td>{{ bien.price }} euro </td>
+			</tr>
+			<tr>
+				<th>Piece</th>
+				<td>{{ bien.rooms }}</td>
+			</tr>
+			<tr>
+				<th>Chambre</th>
+				<td>{{ bien.bedrooms }}</td>
+			</tr>
+			<tr>
+				<th>Energie</th>
+				<td>{{ bien.energy }}</td>
+			</tr>
+			<tr>
+				<th>Superficie</th>
+				<td>{{ bien.area }} m2</td>
+			</tr>
+			
+			<tr>
+				<th>Adresse</th>
+				<td>{{ bien.adress }}</td>
+			</tr>
+
+			<tr>
+				<th>Email</th>
+				<td>{{ bien.users.email }}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -46,8 +75,6 @@
 		<a href="{{ path('home_annonce') }}">Retour à la liste
 		</a>
 	</div>
-
-
 	<div class="accordion" id="accordionExample">
 		<div class="accordion-item">
 			<h2 class="accordion-header" id="headingOne">
@@ -73,12 +100,8 @@
 						</div>
 						{{ form_end(form) }}
 					</div>
-
 				</div>
 			</div>
 		</div>
-
 	</div>
-
-
 {% endblock %}
