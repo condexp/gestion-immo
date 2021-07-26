@@ -5,6 +5,8 @@ namespace App\Controller\guest;
 use App\Entity\Contact;
 use App\Entity\Property;
 use App\Form\ContactType;
+use App\Entity\PropertySearch;
+use App\Form\PropertyFormSearchType;
 use App\Repository\PropertyRepository;
 use App\Notification\ContactNotification;
 use Knp\Component\Pager\PaginatorInterface;
@@ -17,22 +19,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PropertyHomeController extends AbstractController
 {
+
+    /**
+     * @var PropertyRepository
+     */
+    private $repository;
+
+    public function __construct(PropertyRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+
     /**
      * @Route("/", name="home_annonce")
      */
 
     public function findallbien(Request $request, PaginatorInterface  $paginator): Response
     {
-        $datanew = $this->getDoctrine()->getRepository(Property::class)->findBy([], ['createdAt' => 'desc']);
+
+        $search = new PropertySearch();
+        $form = $this->createForm(PropertyFormSearchType::class, $search);
+        $form->handleRequest($request);
+
 
         $propertys = $paginator->paginate(
-            $datanew,
+            $this->repository->findAllVisibleQuery($search),
             $request->query->getInt('page', 1),
             4
         );
 
         return $this->render('annonce/index.html.twig', [
-            'property' => $propertys
+            'property' => $propertys,
+            'form'         => $form->createView()
         ]);
     }
 

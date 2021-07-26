@@ -35,12 +35,11 @@ class PropertyController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($property);
             $em->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('admin_property_index');
         }
 
         return $this->render('admin/property/add.html.twig', [
-            'form' => $form->createView(),
-            'bg_image' => 'home-bg.jpg'
+            'form' => $form->createView()
         ]);
     }
 

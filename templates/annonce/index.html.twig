@@ -4,6 +4,27 @@
 {% endblock %}
 
 {% block body %}
+
+ <div class="jumbotron">
+    <div class="container">
+      {{ form_start(form) }}
+      <div class="form-row align-items-end">
+        <div class="col">
+          {{ form_row(form.minSurface) }}
+        </div>
+        <div class="col">
+          {{ form_row(form.maxPrice) }}
+        </div>
+        
+        <div class="col">
+          <div class="form-group">
+            <button class="btn btn-primary">Rechercher</button>
+          </div>
+        </div>
+      </div>
+      {{ form_end(form) }}
+    </div>
+ </div>
 	<section class="py-5">
 		<div class="container px-2 px-lg-2 mt-2">
 			<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -56,8 +77,8 @@
 				{% endfor %}
 			</div>
 			<div class="navigation">
-    {{ knp_pagination_render(property) }}
-	</div>
-		</div>
+    			{{ knp_pagination_render(property) }}
+			</div>
+		</div
 	</section>
 {% endblock %}
