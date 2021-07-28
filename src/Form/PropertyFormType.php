@@ -16,18 +16,19 @@ class PropertyFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, ['label' => 'Titre'])
 
-            ->add('description')
-            ->add('price')
-            ->add('area')
-            ->add('city')
-            ->add('postcode')
-            ->add('adress')
+            ->add('description', TextType::class, ['label' => 'Description'])
+            ->add('price', TextType::class, ['label' => 'Prix'])
+            ->add('area', TextType::class, ['label' => 'Surface'])
+            ->add('city', TextType::class, ['label' => 'Ville'])
+            ->add('postcode', TextType::class, ['label' => 'Code Postale'])
+            ->add('adress', TextType::class, ['label' => 'Adresse'])
+            ->add('phone', TextType::class, ['label' => 'Telephone'])
 
-            ->add('rooms')
-            ->add('bedrooms')
-            ->add('energy')
+            ->add('rooms', TextType::class, ['label' => 'Nombre de Pièces'])
+            ->add('bedrooms', TextType::class, ['label' => 'Nombre de Chambres'])
+            ->add('energy', TextType::class, ['label' => 'Energie'])
             // On ajoute le champ "images" dans le formulaire
             // Il n'est pas lié à la base de données (mapped à false)
             ->add('images', FileType::class, [
@@ -37,10 +38,11 @@ class PropertyFormType extends AbstractType
                 'required' => false
             ])
             ->add('propertytype', EntityType::class, [
-                'class' => PropertyType::class
+                'class' => PropertyType::class,
+                'label' => 'Type de bien'
+
             ]);
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

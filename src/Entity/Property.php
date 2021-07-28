@@ -114,6 +114,11 @@ class Property
      */
     private $propertytype;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phone;
+
 
 
 
@@ -358,6 +363,18 @@ class Property
     public function setPropertytype(?PropertyType $propertytype): self
     {
         $this->propertytype = $propertytype;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

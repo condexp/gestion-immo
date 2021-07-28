@@ -32,7 +32,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
             $property->setBedrooms($faker->numberBetween(1, 9));
             $property->setPrice($faker->numberBetween(100, 900000));
             $property->setEnergy('solaire');
-
+            $property->setPhone($faker->phoneNumber());
             $property->setCity($faker->city);
             $property->setPostcode($faker->postcode);
             $property->setSold($faker->numberBetween(0, 1));

@@ -22,12 +22,12 @@ class PropertyType
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    public $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Property::class, mappedBy="propertytype", orphanRemoval=true)
      */
-    private $properties;
+    public $properties;
 
     public function __construct()
     {

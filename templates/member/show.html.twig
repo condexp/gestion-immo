@@ -7,7 +7,6 @@
 	<h1>Bien</h1>
 	<table class="table">
 		<tbody>
-
 			<tr>
 				<th>Titre</th>
 				<td>{{ bien.title }}</td>
@@ -15,6 +14,51 @@
 			<tr>
 				<th>Description</th>
 				<td>{{ bien.description |  u.truncate(150, '...') | raw  }}</td>
+			</tr>
+			<tr>
+				<th>Prix</th>
+				<td>{{ bien.price }}</td>
+			</tr>
+
+			<tr>
+				<th>Pièces</th>
+				<td>{{ bien.rooms }}</td>
+			</tr>
+
+			<tr>
+				<th>Chambres</th>
+				<td>{{ bien.bedrooms }}</td>
+			</tr>
+			<tr>
+				<th>Type de bien</th>
+
+				<td>{{ dump(bien) }}</td>
+
+
+			</tr>
+			<tr>
+				<th>Adresse</th>
+				<td>{{ bien.adress }}</td>
+			</tr>
+
+			<tr>
+				<th>Ville</th>
+				<td>{{ bien.city }}</td>
+			</tr>
+
+			<tr>
+				<th>Code postale
+				</th>
+				<td>{{ bien.postcode }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ bien.users.email }}</td>
+			</tr>
+
+			<tr>
+				<th>telephone</th>
+				<td>{{ bien.phone }}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -47,7 +91,7 @@
 		</a>
 	</div>
 	<div class="text-left">
-		<a href="{{ path('property_edit', {'id': bien.id}) }}">Modifer</a>
+		<a href="{{ path('property_edit', {'id': bien.id}) }}">Modifier</a>
 	</div>
 	<div class="text-left">
 		{{ include('member/_delete_form.html.twig') }}
