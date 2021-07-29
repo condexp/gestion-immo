@@ -42,6 +42,8 @@ class PropertyRepository extends ServiceEntityRepository
         }
 
 
+        
+
         return $query->getQuery();
     }
 

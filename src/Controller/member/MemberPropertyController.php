@@ -2,9 +2,10 @@
 
 namespace App\Controller\member;
 
-use App\Entity\Property;
 use App\Entity\Images;
+use App\Entity\Property;
 use App\Form\PropertyFormType;
+use App\Repository\PropertyRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,9 +24,10 @@ class MemberPropertyController extends AbstractController
     /**
      * @Route("/view/{id}", methods={"GET"}, name="app_property_list")
      */
-    public function listPropertysByUser($id): Response
+    public function listPropertysByUser($id, PropertyRepository $propertyRepository): Response
     {
-        $propertys = $this->getDoctrine()->getRepository(Property::class)->findBy(['users' => $id]);
+        $propertys = $propertyRepository->findBy(['users' => $id]);
+        // dd($propertys);
         return $this->render('member/_index.html.twig', [
             'propertys' => $propertys,
         ]);
@@ -94,8 +96,15 @@ class MemberPropertyController extends AbstractController
      */
     public function show(Property $bien): Response
     {
+
+
+
+        // dd($typroperty);
+
+
         return $this->render('member/show.html.twig', [
             'bien' => $bien,
+
         ]);
     }
 

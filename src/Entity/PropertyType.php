@@ -22,7 +22,7 @@ class PropertyType
     /**
      * @ORM\Column(type="string", length=255)
      */
-    public $name;
+    private $name;
 
     /**
      * @ORM\OneToMany(targetEntity=Property::class, mappedBy="propertytype", orphanRemoval=true)

@@ -40,7 +40,7 @@ class PropertyFixtures extends Fixture implements DependentFixtureInterface
 
 
             // On uploade et on génère les images
-            for ($k = 1; $k <= 6; $k++) {
+            for ($k = 1; $k <= rand(1, 6); $k++) {
 
                 // $rand = rand(1, 3);
                 $img = 'public/uploads/image' . rand(1, 6) . '.jpg';
