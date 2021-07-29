@@ -20,6 +20,7 @@
         "phpmailer/phpmailer": "^6.5",
         "sensio/framework-extra-bundle": "^6.1",
         "swiftmailer/swiftmailer": "^6.2",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
@@ -104,6 +105,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "compile": [
+            "php bin/console doctrine:migrations:migrate"
         ]
     },
     "conflict": {
