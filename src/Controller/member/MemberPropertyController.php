@@ -97,11 +97,6 @@ class MemberPropertyController extends AbstractController
     public function show(Property $bien): Response
     {
 
-
-
-        // dd($typroperty);
-
-
         return $this->render('member/show.html.twig', [
             'bien' => $bien,
 
