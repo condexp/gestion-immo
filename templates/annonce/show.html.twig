@@ -13,11 +13,13 @@
 			</tr>
 			<tr>
 				<th>Description</th>
-				<td>{{ bien.description |  u.truncate(150, '...') | raw  }}</td>
+				<td>{{ bien.description }}</td>
 			</tr>
 			<tr>
 				<th>Prix</th>
-				<td>{{ bien.price }} euro </td>
+				<td>{{ bien.price }}
+					euro
+				</td>
 			</tr>
 			<tr>
 				<th>Piece</th>
@@ -33,9 +35,10 @@
 			</tr>
 			<tr>
 				<th>Superficie</th>
-				<td>{{ bien.area }} m2</td>
+				<td>{{ bien.area }}
+					m2</td>
 			</tr>
-			
+
 			<tr>
 				<th>Adresse</th>
 				<td>{{ bien.adress }}</td>
@@ -44,6 +47,15 @@
 			<tr>
 				<th>Email</th>
 				<td>{{ bien.users.email }}</td>
+			</tr>
+
+			<tr>
+				<th>Telephone</th>
+				<td>{{ bien.phone }}</td>
+			</tr>
+			<tr>
+				<th>Status</th>
+				<td>{{ bien.sold  ? 'Disponible' : 'Urgent'}}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -75,33 +87,5 @@
 		<a href="{{ path('home_annonce') }}">Retour à la liste
 		</a>
 	</div>
-	<div class="accordion" id="accordionExample">
-		<div class="accordion-item">
-			<h2 class="accordion-header" id="headingOne">
-				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-					contacter l'annonceur
-				</button>
-			</h2>
-			<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
-				<div class="accordion-body">
-					<div id="contactForm" class="mt-4">
-						{{ form_start(form) }}
-						<div class="row">
-							<div class="col">{{ form_row(form.firstname) }}</div>
-							<div class="col">{{ form_row(form.lastname) }}</div>
-						</div>
-						<div class="row">
-							<div class="col">{{ form_row(form.phone) }}</div>
-							<div class="col">{{ form_row(form.email) }}</div>
-						</div>
-						{{ form_rest(form) }}
-						<div class="form-group">
-							<button class="btn btn-primary">Envoyer</button>
-						</div>
-						{{ form_end(form) }}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 {% endblock %}

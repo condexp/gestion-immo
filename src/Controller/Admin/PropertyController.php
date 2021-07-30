@@ -15,7 +15,7 @@ class PropertyController extends AbstractController
 {
 
     /**
-     * @Route("/property/add", name="property_add")
+     * @Route("/admin/property/add", name="property_add")
      */
     public function addProperty(Request $request): Response
     {
@@ -68,7 +68,7 @@ class PropertyController extends AbstractController
             $property->setActive(true);
         }
         */
-
+        ($property);
         $em = $this->getDoctrine()->getManager();
         $em->persist($property);
         $em->flush();

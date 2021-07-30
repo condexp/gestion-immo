@@ -39,7 +39,7 @@ class PropertyRepository extends ServiceEntityRepository
             $query = $query
                 ->andWhere('p.area >= :minsurface')
                 ->setParameter('minsurface', $search->getMinSurface());
-        }      
+        }
 
         return $query->getQuery();
     }
@@ -48,7 +48,8 @@ class PropertyRepository extends ServiceEntityRepository
     private function findVisibleQuery(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
-            ->where('p.sold = false');
-    }
 
+            ->andWhere('p.active = :active')
+            ->setParameter('active', true);
+    }
 }

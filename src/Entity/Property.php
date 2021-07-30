@@ -108,6 +108,8 @@ class Property
      */
     private $active;
 
+    
+
     /**
      * @ORM\ManyToOne(targetEntity=PropertyType::class, inversedBy="properties")
      * @ORM\JoinColumn(nullable=false)

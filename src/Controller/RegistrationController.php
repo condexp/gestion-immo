@@ -29,6 +29,8 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new Users();
+
+       
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -52,11 +54,11 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('sabbah@sabbah.com', 'sabbah annonces immobilières'))
                     ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
+                    ->subject('SVP veuillez confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
-
+dd($user);
             return $this->redirectToRoute('home_annonce');
         }
 

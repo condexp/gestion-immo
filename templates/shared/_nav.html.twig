@@ -8,33 +8,36 @@
 				<li class="nav-item">
 					<a class="nav-link active" aria-current="page" href="{{ path('home_annonce') }}">Home</a>
 				</li>
-
 				<li class="nav-item">
 					<a class="nav-link" href="#!">About</a>
 				</li>
-
 			</ul>
 			<div class="float-right">
-				<ul class="navbar-nav me-auto mb-1 mb-lg-0 ms-lg-4">
-
-					{% if not app.user %}
-
+				<ul
+					class="navbar-nav me-auto mb-1 mb-lg-0 ms-lg-4">
+					{# S'il n'est pas connecté #}
+					{% if not is_granted('ROLE_USER') %}
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
 						</li>
-
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_register') }}">Enregistrement</a>
-
 						</li>
-
+						{# S'il est connecté #}
 					{% else %}
-
+						{# S'il est admin #}
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('admin_property_index') }}">Dashboard</a>
+							</li>
+							{# S'il n'est pas admin donc il est user  #}
+						{% else %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_property_list', {'id': app.user.id}) }}" role="button">Mon compte</a>
+							</li>
+						{% endif %}
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_property_list', {'id': app.user.id}) }}" role="button">Mon compte</a>
+							<a class="nav-link" href="{{ path('app_logout') }}">Deconnection</a>
 						</li>
 					{% endif %}
 				</ul>
