@@ -51,7 +51,6 @@ class UsersAuthentificatorAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-
         return new RedirectResponse($this->urlGenerator->generate('home_annonce'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }

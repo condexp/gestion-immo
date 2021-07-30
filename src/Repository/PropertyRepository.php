@@ -39,10 +39,7 @@ class PropertyRepository extends ServiceEntityRepository
             $query = $query
                 ->andWhere('p.area >= :minsurface')
                 ->setParameter('minsurface', $search->getMinSurface());
-        }
-
-
-        
+        }      
 
         return $query->getQuery();
     }
@@ -54,34 +51,4 @@ class PropertyRepository extends ServiceEntityRepository
             ->where('p.sold = false');
     }
 
-
-
-    //SELECT u.email from property p, users u WHERE u.id=p.users_id 
-    //  * @return Property[] Returns an array of Property objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('b.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Property
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

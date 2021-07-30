@@ -44,10 +44,7 @@ class MemberPropertyController extends AbstractController
         $form = $this->createForm(PropertyFormType::class, $bien);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
-
-
 
             //dd($this->getUser());
             $bien->setActive(false);
