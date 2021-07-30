@@ -3,12 +3,20 @@
 {% block title %}Sabbah annonce
 {% endblock %}
 
-{% block body %}
+{% block stylesheets %}
+	<style>
+		.card {
+			box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, 0.2);
+		}
+	</style>
+{% endblock %}
 
-	<div class="jumbotron">
-		<div class="container">
+{% block body %}
+	<div class="container">
+		<div class="d-flex justify-content-center">
 			{{ form_start(form) }}
-			<div class="form-row align-items-end">
+
+			<div class="row">
 				<div class="col">
 					{{ form_row(form.minSurface) }}
 				</div>
@@ -16,9 +24,9 @@
 					{{ form_row(form.maxPrice) }}
 				</div>
 
-				<div class="col">
+				<div class="col text-center">
 					<div class="form-group">
-						<button class="btn btn-primary">Rechercher</button>
+						<button class="btn btn-dark">Rechercher</button>
 					</div>
 				</div>
 			</div>
@@ -83,8 +91,12 @@
 					</div>
 				{% endfor %}
 			</div>
-			<div class="navigation">
-				{{ knp_pagination_render(property) }}
+
+			<div class="d-flex justify-content-center">
+				<div class="col-1">
+					{{ knp_pagination_render(property) }}
+				</div>
 			</div>
-		</div</section>
-	{% endblock %}
+		</div>
+	</section>
+{% endblock %}
