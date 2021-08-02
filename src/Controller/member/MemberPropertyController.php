@@ -79,6 +79,8 @@ class MemberPropertyController extends AbstractController
             $entityManager->persist($bien);
             $entityManager->flush();
             $iduser = $this->getUser()->getId();
+            $this->addFlash('success', 'Votre bien a été créé avec succès !');
+
             return $this->redirectToRoute('app_property_list',  ['id' => $iduser], Response::HTTP_SEE_OTHER);
         }
 
@@ -134,6 +136,7 @@ class MemberPropertyController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $iduser = $this->getUser()->getId();
+            $this->addFlash('success', 'Votre bien a été modifié avec succès !');
             return $this->redirectToRoute('app_property_list',  ['id' => $iduser], Response::HTTP_SEE_OTHER);
         }
 

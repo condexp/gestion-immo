@@ -18,14 +18,14 @@ class PropertyFormSearchType extends AbstractType
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Surface minimale'
+                    'placeholder' => 'Votre surface min'
                 ]
             ])
             ->add('maxPrice', IntegerType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'Budget max'
+                    'placeholder' => 'Votre budget max'
                 ]
             ]);
     }

@@ -108,7 +108,7 @@ class Property
      */
     private $active;
 
-    
+
 
     /**
      * @ORM\ManyToOne(targetEntity=PropertyType::class, inversedBy="properties")
@@ -120,6 +120,11 @@ class Property
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $unattributdedemonstration;
 
 
 
@@ -377,6 +382,18 @@ class Property
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getUnattributdedemonstration(): ?string
+    {
+        return $this->unattributdedemonstration;
+    }
+
+    public function setUnattributdedemonstration(?string $unattributdedemonstration): self
+    {
+        $this->unattributdedemonstration = $unattributdedemonstration;
 
         return $this;
     }

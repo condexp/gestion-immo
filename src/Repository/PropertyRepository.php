@@ -25,13 +25,22 @@ class PropertyRepository extends ServiceEntityRepository
     /**
      * @return Query
      */
+
+    //La fonction prend en paramettre La classe PropertySearch et
+    //son type de retour est une Query
     public function findAllVisibleQuery(PropertySearch $search): Query
     {
+        // je vais sauvegardé le resultat de la requete de findVisibleQuery dans $query 
         $query = $this->findVisibleQuery();
 
+        // si j'ai un  getMaxPrice()
         if ($search->getMaxPrice()) {
+            // je rajoute à ma requete $query la clause where
             $query = $query
+                // je veux que le prix de mon bien (p.price) soit inferieure ou equale
+                // à maxprice (prix maxi saisi dans le formulaire)
                 ->andWhere('p.price <= :maxprice')
+                // la methode  setParameter , maxprice aura pour valeur =>$search->getMaxPrice()
                 ->setParameter('maxprice', $search->getMaxPrice());
         }
 
@@ -41,14 +50,13 @@ class PropertyRepository extends ServiceEntityRepository
                 ->setParameter('minsurface', $search->getMinSurface());
         }
 
+        // Ici je retourne le resultat de la requete
         return $query->getQuery();
     }
-
 
     private function findVisibleQuery(): QueryBuilder
     {
         return $this->createQueryBuilder('p')
-
             ->andWhere('p.active = :active')
             ->setParameter('active', true);
     }

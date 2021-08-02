@@ -27,10 +27,11 @@ class UsersFixtures extends Fixture
             $user = new Users();
             $user->setEmail($faker->email);
 
-            if ($nbUsers === 1)
+            if ($nbUsers === 1) {
 
                 $user->setRoles(['ROLE_ADMIN']);
-            else
+                $user->setIsVerified(true);
+            } else
                 $user->setRoles(['ROLE_USER']);
 
             $user->setPassword($this->encoder->encodePassword($user, '123456'));

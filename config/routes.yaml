@@ -1,3 +1,43 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+# #index:
+# #    path: /
+# #    controller: App\Controller\DefaultController::index
+########## Presentation ##############################################################
+# :\wamp64\www\gestion-immo>php bin/console debug:router
+#  ----------------------------- ---------- -------- ------ -----------------------------------
+#   Name                          Method     Scheme   Host   Path
+#  ----------------------------- ---------- -------- ------ -----------------------------------
+#   _wdt                          ANY        ANY      ANY    /_wdt/{token}
+#   _profiler_home                ANY        ANY      ANY    /_profiler/
+#   _profiler_search              ANY        ANY      ANY    /_profiler/search
+#   _profiler_search_bar          ANY        ANY      ANY    /_profiler/search_bar
+#   _profiler_phpinfo             ANY        ANY      ANY    /_profiler/phpinfo
+#   _profiler_search_results      ANY        ANY      ANY    /_profiler/{token}/search/results
+#   _profiler_open_file           ANY        ANY      ANY    /_profiler/open
+#   _profiler                     ANY        ANY      ANY    /_profiler/{token}
+#   _profiler_router              ANY        ANY      ANY    /_profiler/{token}/router
+#   _profiler_exception           ANY        ANY      ANY    /_profiler/{token}/exception
+#   _profiler_exception_css       ANY        ANY      ANY    /_profiler/{token}/exception.css
+#   admin_home                    ANY        ANY      ANY    /admin
+#   admin_test                    ANY        ANY      ANY    /admin/test
+#   property_add                  ANY        ANY      ANY    /admin/property/add
+#   admin_property_index          ANY        ANY      ANY    /admin/property
+#   admin_property_activate       ANY        ANY      ANY    /admin/property/activate/{id}
+#   admin_property_delete         ANY        ANY      ANY    /admin/property/delete/{id}
+#   admin_property_update         ANY        ANY      ANY    /admin/property/update/{id}
+#   app_register                  ANY        ANY      ANY    /register
+#   app_verify_email              ANY        ANY      ANY    /verify/email
+#   app_forgot_password_request   ANY        ANY      ANY    /reset-password
+#   app_check_email               ANY        ANY      ANY    /reset-password/check-email
+#   app_reset_password            ANY        ANY      ANY    /reset-password/reset/{token}
+#   app_login                     ANY        ANY      ANY    /login
+#   app_logout                    ANY        ANY      ANY    /logout
+#   home_annonce                  ANY        ANY      ANY    /
+#   property_show_guest           GET|POST   ANY      ANY    /{slug}
+#   app_property_list             GET        ANY      ANY    /member/view/{id}
+#   property_new                  GET|POST   ANY      ANY    /member/new/{id}
+#   property_show                 GET        ANY      ANY    /member/{id}/show
+#   property_edit                 GET|POST   ANY      ANY    /member/{id}/edit
+#   property_delete               POST       ANY      ANY    /member/{id}
+#   property_delete_image         DELETE     ANY      ANY    /member/supprime/image/{id}
+#   _preview_error                ANY        ANY      ANY    /_error/{code}.{_format}
+#  ----------------------------- ---------- -------- ------ -----------------------------------
